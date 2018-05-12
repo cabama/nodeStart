@@ -17,9 +17,9 @@ services:
       - hormiguitas
     ports:
       - "2525:8080"
-    labels:
-      - "traefik.frontend.rule=Host:app.reshuhormiguero.club"
     deploy:
+      labels:
+        - "traefik.frontend.rule=Host:app.reshuhormiguero.club"
       restart_policy:
         condition: on-failure
       placement:
