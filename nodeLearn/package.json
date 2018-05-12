@@ -1,0 +1,41 @@
+{
+  "name": "jaguer_backend",
+  "version": "1.0.0",
+  "description": "Node.js on Docker",
+  "author": "Carlos Barreiro barreymata@gmail.com",
+  "main": "src/app.ts",
+  "scripts": {
+    "start": "nodemon -L -e ts,json --exec \"npm run compile\"",
+    "debug": "nodemon -L -e ts,json --exec \"npm run compileDev\"",
+    "compile": "tsc && node bin/app.js",
+    "compileDev": "tsc && node --inspect=0.0.0.0:9229 bin/app.js",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w"
+  },
+  "dependencies": {
+    "axios": "^0.17.1",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.2",
+    "connect-multiparty": "^2.1.0",
+    "csvtojson": "^1.1.9",
+    "ejs": "^2.5.7",
+    "express": "^4.13.3",
+    "jwt-simple": "^0.5.1",
+    "moment": "^2.19.1",
+    "mongoose": "^4.13.0",
+    "node-schedule": "^1.2.5",
+    "nodemon": "^1.17.4",
+    "request": "^2.83.0"
+  },
+  "devDependencies": {
+    "@types/node-schedule": "^1.2.1",
+    "@types/bcrypt-nodejs": "0.0.30",
+    "@types/body-parser": "^1.16.7",
+    "@types/mongoose": "^4.7.24",
+    "@types/express": "^4.0.37",
+    "@types/jwt-simple": "^0.5.33",
+    "@types/moment": "^2.13.0",
+    "typescript": "^2.0.3"
+  },
+  "license": "MIT"
+}

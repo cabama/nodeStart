@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+
+  nodeLearn:
+    image: carlos/nodelearn
+    build: 
+      context: nodeLearn/.
+      dockerfile: Dockerfile.Production
+    container_name: nodeLearn
+    command: yarn run compile
+    depends_on:
+      - 'mongoLearn'
+    volumes:
+      - ./nodeLearn/src:/usr/src/jaguer/src
+    networks:
+      - hormiguitas
+    ports:
+      - "2525:8080"
+    labels:
+      - "traefik.frontend.rule=Host:app.reshuhormiguero.club"
+    deploy:
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints: [node.role == manager]
+
+  mongoLearn:
+    image: mongo:latest
+    volumes:
+      - ./mongo/data:/data/db
+    networks:
+      - hormiguitas
+    ports:
+      - "27017:27017"
+    deploy:
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints: [node.role == manager]
+    
+
+networks:
+  hormiguitas:
