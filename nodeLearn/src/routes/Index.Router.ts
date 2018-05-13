@@ -14,6 +14,7 @@ export class routing_jaguer {
 
 	constructor () {
 		this.router.get('/reshu', (req,res) => res.json({hola: 'rehola cazador sin pistola'}))
+		this.router.get('/hormiga', (req,res) => res.json({hola: 'hola soy una hormiga'}))
 	}
 	
 	get enrouting () { return this.router }
