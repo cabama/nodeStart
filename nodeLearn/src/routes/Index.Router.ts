@@ -13,7 +13,7 @@ export class routing_jaguer {
 	public userController = new CtrUser ()
 
 	constructor () {
-		this.router.get('/reshu', (req,res) => res.json({hola: 'cazador sin pistola'}))
+		this.router.get('/reshu', (req,res) => res.json({hola: 'rehola cazador sin pistola'}))
 	}
 	
 	get enrouting () { return this.router }
