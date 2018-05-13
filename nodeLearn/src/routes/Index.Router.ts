@@ -14,7 +14,7 @@ export class routing_jaguer {
 	public userController = new CtrUser ()
 
 	constructor () {
-		this.router.get('/carlos', (req,res) => res.json({hola: 'caracola'}))
+		this.router.get('/reshu', (req,res) => res.json({hola: 'caracola'}))
 	}
 	
 	get enrouting () { return this.router }
