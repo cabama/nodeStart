@@ -5,7 +5,6 @@ import { RequestAuth } from 'config/interfaces.type';
 
 import { CtrUser } from '../controllers/Users.Ctrl'
 import { CONFIG } from '../config/config'
-import * as multipart from 'connect-multiparty';
 
 export class routing_jaguer {
 	
@@ -14,7 +13,7 @@ export class routing_jaguer {
 	public userController = new CtrUser ()
 
 	constructor () {
-		this.router.get('/reshu', (req,res) => res.json({hola: 'caracola'}))
+		this.router.get('/reshu', (req,res) => res.json({hola: 'cazador sin pistola'}))
 	}
 	
 	get enrouting () { return this.router }
