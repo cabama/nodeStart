@@ -11,8 +11,6 @@ services:
     command: npm run compile
     depends_on:
       - 'mongoLearn'
-    volumes:
-      - ./nodeLearn/src:/usr/src/jaguer/src
     networks:
       - hormiguitas
     ports:
@@ -25,8 +23,8 @@ services:
 
   mongoLearn:
     image: mongo:latest
-    volumes:
-      - ./mongo/data:/data/db
+    # volumes:
+    #  - ./mongo/data:/data/db
     networks:
       - hormiguitas
     ports:
