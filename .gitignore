@@ -1,3 +1,9 @@
+# build
+app/bin/
+
+# MongoDB
+mongo/data/
+
 # Logs
 logs
 *.log

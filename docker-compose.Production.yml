@@ -23,8 +23,8 @@ services:
 
   mongoLearn:
     image: mongo:latest
-    # volumes:
-    #  - ./mongo/data:/data/db
+    volumes:
+      - ./mongo/data:/data/db
     networks:
       - hormiguitas
     ports:

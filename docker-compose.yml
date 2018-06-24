@@ -4,19 +4,17 @@ services:
 
   nodeLearn:
     image: carlos/nodelearn
-    build: nodeLearn/.
+    build: app/.
     container_name: nodeLearn
-    command: yarn run compile
+    command: yarn run start
     depends_on:
       - 'mongoLearn'
     volumes:
-      - ./nodeLearn/src:/usr/src/jaguer/src
+      - ./app/src:/usr/src/jaguer/src
     networks:
       - networkLearn
     ports:
       - "2525:8080"
-    labels:
-      - "traefik.frontend.rule=Host:app.reshuhormiguero.club"
     deploy:
       restart_policy:
         condition: on-failure
@@ -30,7 +28,7 @@ services:
     networks:
       - networkLearn
     ports:
-      - "27017:27017"
+      - "27027:27017"
     deploy:
       restart_policy:
         condition: on-failure
