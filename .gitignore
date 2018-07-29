@@ -1,6 +1,9 @@
 # build
 app/bin/
 
+# Enviroments
+*.env
+
 # MongoDB
 mongo/data/
 
