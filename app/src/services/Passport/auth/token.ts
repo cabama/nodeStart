@@ -29,10 +29,12 @@ export function generateAccessToken(userId) {
   return token;
 }
 
-export async function setUpJWT (passport) {
-  await passport.use(new passportJwt.Strategy(tokenConfig, async (payload, done) => {
+export function setUpJWT (passport) {
+  passport.use(new passportJwt.Strategy(tokenConfig, async (payload, done) => {
     const user = await MdUser.findOne({ userid: payload.sub})
     if (user) return done(null, user, payload);
     else return done('Hubo un error');
   }));
+
+  return passport
 }

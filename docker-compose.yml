@@ -15,6 +15,8 @@ services:
       - networkLearn
     ports:
       - "2525:8080"
+    env_file:
+      enviroments.env
     deploy:
       restart_policy:
         condition: on-failure

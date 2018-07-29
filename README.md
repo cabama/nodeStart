@@ -3,7 +3,7 @@ This repository for quickstart a nodejs project. The code is writed in typescrip
 
 For the login, Passport is used and setup with GoogleAuth and Token.
 
-## DockerCompose
+#### DockerCompose
 DockerCompose is used.
 There are:
 - Node image -> this generate a bin folder with the built files.

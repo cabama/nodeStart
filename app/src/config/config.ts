@@ -1,6 +1,5 @@
-export const CONFIG = {
+
+export const mongoConfig = {
   'port': process.env.PORT || 8080,
-  'database': 'mongodb://localhost:27017/jaguer',
-  'avatarPath': './public',
-  'secret': 'firmaSecretaCabama55'
-};
+  'database': 'mongodb://localhost:27017/hormiguitas',
+}
