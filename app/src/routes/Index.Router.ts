@@ -2,21 +2,26 @@
 import { Router } from 'express'
 import { default as passport, generateAccessToken } from '../services/Passport/passport'
 import { LoginRouter } from './login.router';
+import { UserRouter } from './user.router';
 
 export class Routing {
 	
 	private router = Router();
 	private loginRouter: LoginRouter;
+	private userRouter: UserRouter;
 
 	constructor () {
 		this.loginRouter = new LoginRouter()
+		this.userRouter = new UserRouter()
 		this.router.use('/login', this.loginRouter.routing)
+		this.router.use('/users', this.userRouter.routing)
 		this.router.use('/', this.setRoutes)
+		
 	}
 
 	get setRoutes () {
 		this.router.get('/',   // This request must be authenticated using a JWT, or else we will fail
-			this.loginRouter.isAuth(),
+			LoginRouter.isAuth(),
 			(req, res) => {
 				console.log(req.user)
 				res.json(req.user.id)

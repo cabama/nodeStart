@@ -17,7 +17,7 @@ export class LoginRouter {
 
   get routing () { return this.router } 
 
-  public isAuth () {
+  public static isAuth () {
     return passport.authenticate(['jwt'], { session: false })
   }
 
