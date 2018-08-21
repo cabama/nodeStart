@@ -4,7 +4,7 @@ import { MdUser, AccountOrigin, AccountRole, UserModel } from '../models/Users.M
 export class LoginController {
 
   public signUp (req: Request, res: Response, next: NextFunction) {
-    
+
     const { email, password } = req.body
     if (!email || !password) {
       this.invalid('Not email or password', res)
@@ -27,7 +27,7 @@ export class LoginController {
     return new MdUser({
       email,
       password,
-      origin: AccountOrigin.local,
+      origin,
       role: AccountRole.slave
     }).save()
   }
