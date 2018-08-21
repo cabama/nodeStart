@@ -33,8 +33,9 @@ app.use(passport.session());
 //app.set('view engine', 'ejs');
 
 // Public folder
-app.use(bodyParser.json())
-app.use("/public", express.static(__dirname + '/../public'));
+app.use(bodyParser.urlencoded({ 'extended': true })); // parse application/x-www-form-urlencoded
+app.use(bodyParser.json()); // parse application/json
+app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as jsonapp.use("/public", express.static(__dirname + '/../public'));
 
 // Index Routing
 app.use( '/api', new enrouting.Routing().enrouting );

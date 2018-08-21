@@ -32,7 +32,7 @@ export class UserRouter {
   }
 
   async getAll(req: express.Request, res: express.Response) {
-    const user = await MdUser.find
+    const user = await MdUser.find({})
     res.json(user)
   }
 

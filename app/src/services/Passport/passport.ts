@@ -1,7 +1,8 @@
 import * as Passport from 'passport'
+import { setGoogleStrategy, googleParams } from './auth/google';
+import { setLocalStrategy } from './auth/local';
 import { setUpJWT } from './auth/token';
 import { google } from '../../config/getEnviroments';
-import { setGoogleStrategy, googleParams } from './auth/google';
 import { MdUser } from '../../models/Users.Model';
 
 export { setGoogleStrategy } from './auth/google'
@@ -34,5 +35,6 @@ if (google.enabled) {
 }
 
 passport = setUpJWT(passport)
+passport = setLocalStrategy(passport)
 
 export default passport

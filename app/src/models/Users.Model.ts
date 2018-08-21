@@ -5,6 +5,8 @@ import { Schema } from 'mongoose'
 export interface UserModel extends mongoose.Document {
   name: string
   userId: string
+  email: string
+  password: string
   updateAt: Date
 }
 
@@ -12,6 +14,8 @@ export interface UserModel extends mongoose.Document {
 var userSchema = new Schema({
   name: String,
   userid: String,
+  email: String,
+  password: String
 });
 
 // the schema is useless so far

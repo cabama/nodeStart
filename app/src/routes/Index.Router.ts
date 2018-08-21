@@ -11,12 +11,22 @@ export class Routing {
 	private userRouter: UserRouter;
 
 	constructor () {
+		this.router.use(this.enableCors)
 		this.loginRouter = new LoginRouter()
 		this.userRouter = new UserRouter()
 		this.router.use('/login', this.loginRouter.routing)
 		this.router.use('/users', this.userRouter.routing)
 		this.router.use('/', this.setRoutes)
-		
+	}
+
+	enableCors(req, res, next) {
+			// Website you wish to allow to connect
+			res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+			res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+			res.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+			res.setHeader('Access-Control-Allow-Credentials', 'true');
+			// Pass to next layer of middleware
+			next();
 	}
 
 	get setRoutes () {
