@@ -2,12 +2,24 @@
 import * as mongoose from 'mongoose'
 import { Schema } from 'mongoose'
 
+export enum AccountOrigin {
+  'local' = 'LOCAL',
+  'google' = 'GOOGLE'
+}
+
+export enum AccountRole {
+  'admin' = 'admin',
+  'slave' = 'slave'
+}
+
 export interface UserModel extends mongoose.Document {
   name: string
   userId: string
   email: string
   password: string
   updateAt: Date
+  role: AccountRole
+  origin: AccountOrigin
 }
 
 // create a schema
@@ -15,7 +27,9 @@ var userSchema = new Schema({
   name: String,
   userid: String,
   email: String,
-  password: String
+  password: String,
+  origin: String,
+  role: String
 });
 
 // the schema is useless so far

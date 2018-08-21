@@ -4,4 +4,5 @@ class UserController {
   public getAllUser (req: Request, res: Response, next: NextFunction): any {
     return [{name: 'carlos'}]
   }
+
 }

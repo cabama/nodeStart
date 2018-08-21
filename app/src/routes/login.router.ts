@@ -1,14 +1,16 @@
 import { Router, Response, Request } from 'express';
 import { default as passport, generateAccessToken } from '../services/Passport/passport'
+import { LoginController } from '../controllers/Login.ctrl';
 
 export class LoginRouter {
 
   private failureUrl = '/api/notLogged'
   private router = Router()
+  private loginCtrl = new LoginController()
 
   constructor () {
     this.router.get('/notLogged', (req, res) => res.json({ login: 'No estas logueado.' }));
-    this.router.post('/signup, ')
+    this.router.post('/signup', this.loginCtrl.signUp.bind(this.loginCtrl))
     this.router.post('/email', this.emailLogin)
     this.router.get('/google', this.googleLogin() );
     this.router.get('/google/callback',
