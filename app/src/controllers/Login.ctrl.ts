@@ -14,7 +14,7 @@ export class LoginController {
       return
     }
   
-    const emailChecked = await this.checkEmail(email)
+    const emailChecked = await this.isValidEmail(email)
     if (!emailChecked) {
       this.invalid('Email not valid', res)
       return
@@ -37,12 +37,15 @@ export class LoginController {
     }).save()
   }
 
-  private async checkEmail (email: string) {
+  // return false if the email is not valid
+  private async isValidEmail (email: string) {
     var re = /[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm;
     const emailValid = re.test(email)
     if (!emailValid) return emailValid
     const emailFound = await MdUser.findOne({email: email})
-    return !emailFound
+    return (emailFound===null)
+      ? true
+      : !emailFound
   }
 
   private encryptPassword ( password: string ): string {
