@@ -31,7 +31,7 @@ export function generateAccessToken(userId) {
 
 export function setUpJWT (passport) {
   passport.use(new passportJwt.Strategy(tokenConfig, async (payload, done) => {
-    const user = await MdUser.findOne({ userid: payload.sub})
+    const user = await MdUser.findOne({ _id: payload.sub})
     if (user) return done(null, user, payload);
     else return done('Hubo un error');
   }));

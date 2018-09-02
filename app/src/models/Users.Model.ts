@@ -27,7 +27,10 @@ var userSchema = new Schema({
   name: String,
   userid: String,
   email: String,
-  password: String,
+  password: {
+    type: String,
+    select: false
+  },
   origin: String,
   role: String
 });

@@ -1,27 +1,21 @@
 import { Request, Response, NextFunction } from "express";
 import { hashSync } from 'bcrypt'
-
 import { MdUser, AccountOrigin, AccountRole, UserModel } from '../models/Users.Model'
 
 export class LoginController {
 
   public async signUp (req: Request, res: Response, next: NextFunction) {
-
     const { email, password } = req.body
-
     if (!email || !password) {
       this.invalid('Not email or password', res)
       return
     }
-  
     const emailChecked = await this.checkEmail(email)
     if (!emailChecked) {
       this.invalid('Email not valid', res)
       return
     }
-
     const passwordEncrypted = this.encryptPassword(password)
-
     // Finally create the user
     LoginController.createNewUser(email, passwordEncrypted, AccountOrigin.local)
       .then( user => res.json({status: 'ok', info: user}))

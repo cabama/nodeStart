@@ -25,6 +25,7 @@ services:
 
   mongoLearn:
     image: mongo:latest
+    container_name: mongoLearn
     volumes:
       - ./mongo/data:/data/db
     networks:

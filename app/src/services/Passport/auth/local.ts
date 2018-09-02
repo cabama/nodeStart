@@ -1,5 +1,6 @@
 import {Strategy} from 'passport-local'
 import { MdUser, UserModel } from '../../../models/Users.Model';
+import { generateAccessToken } from './token';
 
 const isValidPassword = (user: UserModel, password: string) => {
   return true
@@ -7,7 +8,6 @@ const isValidPassword = (user: UserModel, password: string) => {
 
 
 export function setLocalStrategy(passport) {
-  console.log('Pongo un passport CAAARLOS')
   passport.use(
     new Strategy(
       {
@@ -15,19 +15,14 @@ export function setLocalStrategy(passport) {
         passwordField: 'password',
       },
       function (email, password, done) {
-        console.log('Estas en la estrategia local', email)
         // check in mongo if a user with username exists or not
         MdUser.findOne({ 'email': email })
           .then((user: UserModel)=>{
-            if (!user) {
-              console.log('User Not Found with username ');
-              return done(null, false);
-            }
-            done(null, user)
+            if (!user) return done(null, false);
+            const token = generateAccessToken(user._id)
+            done(null, {token})
           })
-          .catch((error) => {
-            done(null, false)
-          })
+          .catch((error) => { done(null, false) })
       }));
   return passport
 }

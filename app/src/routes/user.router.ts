@@ -1,34 +1,30 @@
+import { UserModel } from './../models/Users.Model'
 import { MdUser } from '../models/Users.Model';
-import { Router, RequestHandler } from "express";
+import { Router } from "express";
 import * as express from 'express';
 import { LoginRouter } from './login.router';
+import { UserController } from '../controllers/User.ctrl'
 
 // Route /users
 
 export class UserRouter {
 
-  private router = Router();
+  private router = Router()
+  private userController = new UserController()
 
   constructor () {
     this.setUpRouting()
   }
 
   private setUpRouting () {
-    this.router.get('/me', LoginRouter.isAuth(), this.getMe);
-    this.router.get('/all', this.getAll);
+    this.router.get('/me', LoginRouter.isAuth(), this.getMe.bind(this));
+    this.router.get('/all', this.getAll.bind(this));
     this.router.get('/id/:userId', this.getById);
   }
 
   async getMe(req:express.Request, res:express.Response) {
     const userid = req.user._id
-    console.log('USERID: '+ userid)
-    if (userid) {
-      MdUser.findById(userid)
-        .then((myUser) => res.json({user: myUser}))
-        .catch(() => res.json({user: 'not exist'}))
-    } else {
-      res.json({ user: null })
-    }
+    this.userController.getUser(res, userid)
   }
 
   async getAll(req: express.Request, res: express.Response) {
@@ -51,4 +47,5 @@ export class UserRouter {
   get routing () {
     return this.router
   }
+
 }

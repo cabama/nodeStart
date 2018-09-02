@@ -45,7 +45,7 @@ export class LoginRouter {
  
 
   private sendToken (req: Request, res: Response) {
-    res.json({ token: generateAccessToken(req.user.userid) });
+    res.json({ token: generateAccessToken(req.user._id) });
   }
 
   
