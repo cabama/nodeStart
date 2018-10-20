@@ -13,6 +13,7 @@ export enum AccountRole {
 }
 
 export interface UserModel extends mongoose.Document {
+  avatar: string
   name: string
   userId: string
   email: string
@@ -24,6 +25,7 @@ export interface UserModel extends mongoose.Document {
 
 // create a schema
 var userSchema = new Schema({
+  avatar: String,
   name: String,
   userid: String,
   email: String,

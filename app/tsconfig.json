@@ -12,6 +12,7 @@
     "emitDecoratorMetadata": true,
     "outDir": "bin",
     "sourceMap": true,
+    "skipLibCheck": true,
     "paths": {
       "@config/*": [
         "./config/*"

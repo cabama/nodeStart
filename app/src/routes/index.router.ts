@@ -21,7 +21,7 @@ export class Routing {
 
   enableCors(req, res, next) {
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     res.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
     res.setHeader('Access-Control-Allow-Credentials', 'true');
@@ -36,7 +36,10 @@ export class Routing {
         console.log(req.user)
         res.json(req.user.id)
       }, (req, res) => res.json(req.user))
-    this.router.get('/hormiga', (req, res) => res.json({ hola: 'hola soy una hormiga' }))
+    this.router.get('/hormiga', (req, res) => {
+      debugger
+      res.json({ hola: 'hola soy una hormiga' })
+    })
 
     // this.router.get('/login', (req, res) => res.json({ login: 'No estas logueado guapeton' }));
     this.router.get('/google/callback',

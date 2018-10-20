@@ -1,6 +1,10 @@
-import { MdUser } from '../models/Users.Model'
+import { MdUser, UserModel } from '../models/Users.Model'
 import { Request, Response, NextFunction } from "express"
-import {check, validationResult, body} from 'express-validator/check'
+import { check, validationResult, body } from 'express-validator/check'
+import { PublicPath } from '../config/getEnviroments'
+import { UploadedFile } from 'express-fileupload'
+import * as path from 'path'
+
 
 export class UserController {
 
@@ -16,7 +20,20 @@ export class UserController {
       .catch(() => res.json({ error: 'error' }))
   }
 
-  public  putUser (req: Request, res: Response): any {
+  public uploadProfileAvatar (user: UserModel, req: Request, res: Response) {
+    const sampleFile = req.files.avatar as UploadedFile
+    const publicPath = PublicPath
+    const fileName = Buffer.from(sampleFile.name).toString('base64')
+    const imgPath = path.join(publicPath, fileName)
+    sampleFile.mv(imgPath, function (err) {
+      if (err) return res.status(500).send(err);
+      user.update({ avatar: fileName })
+        .then(() => res.send('File uploaded!'))
+        .catch(res.status(500).send)
+    });
+  }
+
+  public  putUser (user: UserModel, req: Request, res: Response): any {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(422).json({ errors: errors.array() });
@@ -25,7 +42,11 @@ export class UserController {
     if (req.body.email) toModify = {...toModify, email: req.body.email}
     if (req.body.name) toModify = {...toModify, name: req.body.name}
     if (req.body.password) toModify = {...toModify, password: req.body.password}
-    MdUser.findOneAndUpdate({email: req.body.email}, toModify )
+    // MdUser.findOneAndUpdate({email: req.body.email},  )
+    user.update(toModify)
+      .then((value) => res.json(value))
+      .catch((errors) => res.status(422).json({ errors: errors.array() }))
+    
   }
 }
 

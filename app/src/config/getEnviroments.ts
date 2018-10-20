@@ -1,3 +1,5 @@
+import * as path from 'path'
+
 const hello = process.env.HELLO_WORLD
 const session = process.env.SESSION_SECRET
 
@@ -11,3 +13,6 @@ export var google = {
   clientId: googleClientId,
   clientSecret: googleClientSecret
 }
+
+export const BasePath = path.dirname(path.dirname(__dirname))
+export const PublicPath = path.join(BasePath, 'public')
