@@ -23,12 +23,15 @@ export class UserController {
   public uploadProfileAvatar (user: UserModel, req: Request, res: Response) {
     const sampleFile = req.files.avatar as UploadedFile
     const publicPath = PublicPath
-    const fileName = Buffer.from(sampleFile.name).toString('base64')
-    const imgPath = path.join(publicPath, fileName)
+    const fileName = Buffer.from(user.id + sampleFile.name).toString('base64')
+    const imgPath = path.join(publicPath, 'avatar', fileName)
     sampleFile.mv(imgPath, function (err) {
       if (err) return res.status(500).send(err);
       user.update({ avatar: fileName })
-        .then(() => res.send('File uploaded!'))
+        .then(() => {
+          MdUser.findById(user.id).select("-password -_id")
+          .then((value) => res.status(200).json(value))
+        })
         .catch(res.status(500).send)
     });
   }
@@ -44,7 +47,11 @@ export class UserController {
     if (req.body.password) toModify = {...toModify, password: req.body.password}
     // MdUser.findOneAndUpdate({email: req.body.email},  )
     user.update(toModify)
-      .then((value) => res.json(value))
+      .then((value) => {
+        MdUser.findById(user.id).select("-password -_id")
+          .then((value) => res.json(value))
+          .catch((errors) => res.status(422).json({ errors: errors.array() }))
+      })
       .catch((errors) => res.status(422).json({ errors: errors.array() }))
     
   }
