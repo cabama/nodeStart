@@ -3,7 +3,8 @@ version: '3'
 services:
 
   jaguerMongo:
-    image: mongo:latest
+    image: jaguer/mongo
+    build: mongo/.
     container_name: jaguerMongo
     volumes:
       - ./mongo/data:/data/db
@@ -19,9 +20,7 @@ services:
 
   jaguerNode:
     image: jaguer/node
-    build: app/.
-    container_name: jaguerNode
-    command: yarn compile
+    command: yarn dev
     depends_on:
       - 'jaguerMongo'
     volumes:
