@@ -23,4 +23,3 @@ ADD tsconfig.json /usr/src/jaguer
 
 # FINALLY INSTALL PROYECT DEPS
 RUN yarn
-RUN yarn tsc
