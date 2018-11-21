@@ -3,8 +3,7 @@ version: '3'
 services:
 
   jaguerMongo:
-    image: jaguer/mongo
-    build: mongo/.
+    image: mongo:latest
     container_name: jaguerMongo
     volumes:
       - ./mongo/data:/data/db
@@ -12,12 +11,17 @@ services:
       - jaguerNetwork
     ports:
       - "27027:27017"
+    deploy:
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints: [node.role == manager]
 
   jaguerNode:
     image: jaguer/node
     build: app/.
     container_name: jaguerNode
-    command: yarn dev
+    command: yarn compile
     depends_on:
       - 'jaguerMongo'
     volumes:
@@ -31,6 +35,11 @@ services:
       - "2626:9229"
     env_file:
       enviroments.env
+    deploy:
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints: [node.role == manager]
     
 networks:
   jaguerNetwork:

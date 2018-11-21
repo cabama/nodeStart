@@ -9,6 +9,7 @@ import mongoose = require("mongoose"); //import mongoose
 import * as path from 'path'
 import * as enrouting from './routes/index.router';
 import { sessionSecret, PublicPath } from './config/getEnviroments';
+import { getCalendarJSON } from './services/MadridData/MadridData';
 
 // Constants
 const PORT = 8080;
@@ -16,7 +17,7 @@ const HOST = '0.0.0.0';
 
 //Mongo
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://mongoLearn:27017/learnMongo");
+mongoose.connect("mongodb://jaguerMongo:27017/learnMongo");
 
 // View
 const app = express()
@@ -46,6 +47,12 @@ app.options('*', cors())
 const publicPath = PublicPath
 app.use("/public", express.static(publicPath))
 app.use('/api', new enrouting.Routing().enrouting )
+
+
+getCalendarJSON().then((value) => {
+  console.log(JSON.stringify(value, null, 2))
+})
+
 
 app.listen(PORT, HOST, () => {});
 console.log(`Running on http://${HOST}:${PORT}`);
