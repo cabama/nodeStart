@@ -20,7 +20,7 @@ services:
   jaguerNode:
     image: jaguer/node
     build: app/.
-    command: yarn compile
+    command: yarn ci
     depends_on:
       - 'jaguerMongo'
     volumes:

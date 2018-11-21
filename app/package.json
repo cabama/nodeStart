@@ -10,7 +10,8 @@
     "compile": "tsc && node bin/app.js",
     "compileDev": "tsc && node --inspect=0.0.0.0:9229 bin/app.js",
     "tsc": "tsc",
-    "tsc:w": "tsc -w"
+    "tsc:w": "tsc -w",
+    "ci":  "yarn && yarn tsc"
   },
   "dependencies": {
     "@types/csvtojson": "^1.1.5",
