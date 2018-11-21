@@ -8,7 +8,7 @@ export class TemporadaRouter {
 
   constructor () {
     this.router.get('/calendar', (req, res) => this.Calendar(res));
-    this.router.get('/example', (req, res) => res.json({hola: 'caracola2'}));
+    this.router.get('/example', (req, res) => res.json({hola: 'caracola3'}));
   }
 
   get routing () { return this.router } 
