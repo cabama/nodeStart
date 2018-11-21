@@ -3,19 +3,23 @@ import { Router } from 'express'
 import { default as passport, generateAccessToken } from '../services/Passport/passport'
 import { LoginRouter } from './login.router';
 import { UserRouter } from './user.router';
+import { TemporadaRouter } from './temporada.router';
 
 export class Routing {
 
   private router = Router();
   private loginRouter: LoginRouter;
   private userRouter: UserRouter;
+  private temporadaRouter: TemporadaRouter;
 
   constructor()  {
     this.router.use(this.enableCors)
     this.loginRouter = new LoginRouter()
     this.userRouter = new UserRouter()
+    this.temporadaRouter = new TemporadaRouter()
     this.router.use('/login', this.loginRouter.routing)
     this.router.use('/users', this.userRouter.routing)
+    this.router.use('/temporada', this.temporadaRouter.routing)
     this.router.use('/', this.setRoutes)
   }
 
