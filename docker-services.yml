@@ -20,12 +20,11 @@ services:
   jaguerNode:
     image: jaguer/node
     build: app/.
-    command: yarn ci
+    command: yarn ci && yarn start
     depends_on:
       - 'jaguerMongo'
     volumes:
       - ./app/src:/usr/src/jaguer/src
-      - ./app/bin:/usr/src/jaguer/bin
       - ./app/public:/usr/src/jaguer/public
     networks:
       - jaguerNetwork
