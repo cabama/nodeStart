@@ -23,7 +23,6 @@ services:
     depends_on:
       - 'jaguerMongo'
     volumes:
-      - ./app/src:/usr/src/jaguer/src
       - ./app/public:/usr/src/jaguer/public
     networks:
       - jaguerNetwork
