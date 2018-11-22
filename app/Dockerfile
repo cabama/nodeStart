@@ -24,3 +24,4 @@ ADD src /usr/src/jaguer/src
 
 # FINALLY INSTALL PROYECT DEPS
 RUN yarn
+RUN yarn ci
