@@ -5,7 +5,7 @@
   "author": "Carlos Barreiro barreymata@gmail.com",
   "main": "src/app.ts",
   "scripts": {
-    "start": "npm run compile && bin/app.js",
+    "start": "bin/app.js",
     "start:watch": "nodemon -L -e ts,json --exec \"npm run compile\"",
     "dev": "npm run comileDev && bin/app.js",
     "dev:watch": "nodemon -L -e ts,json --exec \"npm run compileDev\"",
