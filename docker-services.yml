@@ -18,9 +18,8 @@ services:
         constraints: [node.role == manager]
 
   jaguerNode:
-    image: jaguer/node
-    build: app/.
-    command: yarn ci && yarn start
+    image: jaguer/node:latest
+    command: yarn start
     depends_on:
       - 'jaguerMongo'
     volumes:
