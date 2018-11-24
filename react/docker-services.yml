@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+
+  jaguerMongo:
+    image: jaguer/mongo
+    build: mongo/.
+    volumes:
+      - ./mongo/data:/data/db
+    networks:
+      - jaguerNetwork
+    ports:
+      - "27027:27017"
+    deploy:
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints: [node.role == manager]
+
+  jaguerNode:
+    image: jaguer/node:latest
+    command: yarn start
+    depends_on:
+      - 'jaguerMongo'
+    volumes:
+      - ./app/public:/usr/src/jaguer/public
+    networks:
+      - jaguerNetwork
+    ports:
+      - "2525:8080"
+      - "2626:9229"
+    env_file:
+      enviroments.env
+
+  jaguerReact:
+    image: jaguer/node:latest
+    command: yarn start
+    networks:
+      - jaguerNetwork
+    ports:
+      - "2526:8080"
+
+
+
+
+networks:
+  jaguerNetwork:

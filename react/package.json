@@ -1,0 +1,44 @@
+{
+  "name": "hormiguero",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^1.1.0",
+    "@material-ui/icons": "^1.1.0",
+    "@types/react-responsive": "^3.0.2",
+    "firebase": "^5.0.4",
+    "formik": "^1.3.0",
+    "prop-types": "^15.6.1",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-redux": "^5.0.7",
+    "react-responsive": "^5.0.0",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts-ts": "2.16.0",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0",
+    "typestyle": "^2.0.1",
+    "yup": "^0.26.6"
+  },
+  "scripts": {
+    "start": "react-scripts-ts start",
+    "dev": "PORT=2525 REACT_APP_MODE='DEV' REACT_BUILD_MODE='DEV' npm start",
+    "fix": "tslint --fix -c ./tslint.json 'src/**/*{.ts,.tsx}' verbose",
+    "prod": "REACT_BUILD_MODE='PROD' npm start",
+    "build": "react-scripts-ts build",
+    "test": "react-scripts-ts test --env=jsdom",
+    "eject": "react-scripts-ts eject"
+  },
+  "devDependencies": {
+    "@types/yup": "^0.24.9",
+    "@types/jest": "^22.2.3",
+    "@types/material-ui": "^0.21.5",
+    "@types/node": "^10.1.2",
+    "@types/react": "^16.3.14",
+    "@types/react-dom": "^16.0.5",
+    "@types/react-redux": "^6.0.6",
+    "@types/react-router-dom": "^4.2.7",
+    "typescript": "^2.9.1"
+  }
+}
