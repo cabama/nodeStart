@@ -1,9 +1,9 @@
 import { Drawer } from '@material-ui/core'
 import Divider from '@material-ui/core/Divider'
-import { withStyles } from '@material-ui/core/styles'
+import { StyleRulesCallback, withStyles } from '@material-ui/core/styles'
 import * as React from 'react'
 
-const styles = (theme: any) => ({
+const styles: StyleRulesCallback = (theme) => ({
   root: {
     flexGrow: 1,
     zIndex: 1,
@@ -43,4 +43,4 @@ export function DrawerMenu (props: any) {
   )
 }
 
-export const LeftMenuDesktop = withStyles(styles as any)(DrawerMenu)
+export const LeftMenuDesktop = withStyles(styles)(DrawerMenu)

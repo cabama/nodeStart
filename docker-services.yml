@@ -17,6 +17,11 @@ services:
       placement:
         constraints: [node.role == manager]
 
+  jaguerReact:
+    image: jaguer/react:latest
+    build: react/.
+    command: yarn prod
+
   jaguerNode:
     image: jaguer/node:latest
     command: yarn start

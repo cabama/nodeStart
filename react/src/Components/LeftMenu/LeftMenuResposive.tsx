@@ -1,11 +1,11 @@
 import { Drawer } from '@material-ui/core'
 import Divider from '@material-ui/core/Divider'
-import { withStyles } from '@material-ui/core/styles'
+import { StyleRulesCallback, withStyles } from '@material-ui/core/styles'
 import * as React from 'react'
 
 const drawerWidth = 240
 
-const styles = (theme: any) => ({
+const styles: StyleRulesCallback = (theme: any) => ({
   root: {
     flexGrow: 1,
     height: 430,
@@ -41,9 +41,17 @@ const styles = (theme: any) => ({
   },
 })
 
-class DrawerMenuResposive extends React.Component<any, any> {
+interface IDrawerMenuResposiveProps {
+  classes: any
+  theme?: any
+  visible: any
+  close: any
+  items: any
+}
 
-  constructor (props: any, state: any) {
+class DrawerMenuResposive extends React.Component<IDrawerMenuResposiveProps, any> {
+
+  constructor (props: IDrawerMenuResposiveProps, state: any) {
     super(props)
     this.state = { mobileOpen: true}
   }
@@ -67,4 +75,4 @@ class DrawerMenuResposive extends React.Component<any, any> {
 
 }
 
-export const LeftMenuResposive = withStyles(styles as any, { withTheme: true })(DrawerMenuResposive)
+export const LeftMenuResposive = withStyles(styles, { withTheme: true })(DrawerMenuResposive)

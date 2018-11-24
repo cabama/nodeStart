@@ -23,15 +23,15 @@
   },
   "scripts": {
     "start": "react-scripts-ts start",
-    "dev": "PORT=2525 REACT_APP_MODE='DEV' REACT_BUILD_MODE='DEV' npm start",
+    "dev": "PORT=2521 REACT_APP_MODE='DEV' REACT_BUILD_MODE='DEV' npm start",
+    "prod": "PORT=2521 REACT_APP_MODE='PROD' REACT_BUILD_MODE='PROD' npm start",
     "fix": "tslint --fix -c ./tslint.json 'src/**/*{.ts,.tsx}' verbose",
-    "prod": "REACT_BUILD_MODE='PROD' npm start",
     "build": "react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject"
   },
   "devDependencies": {
-    "@types/yup": "^0.24.9",
+    "typescript": "^3.1.6",
     "@types/jest": "^22.2.3",
     "@types/material-ui": "^0.21.5",
     "@types/node": "^10.1.2",
@@ -39,6 +39,6 @@
     "@types/react-dom": "^16.0.5",
     "@types/react-redux": "^6.0.6",
     "@types/react-router-dom": "^4.2.7",
-    "typescript": "^2.9.1"
+    "@types/yup": "^0.24.9"
   }
 }
