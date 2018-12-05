@@ -3,7 +3,6 @@ import { Provider } from 'react-redux'
 import { createStore, Store } from 'redux'
 
 import { colors, createMuiTheme, MuiThemeProvider } from '@material-ui/core'
-import './App.css'
 // import { LeftMenuDesktop } from './Components/LeftMenu/LeftMenuDesktop'
 import { MainView } from './Components/Router/RouterView'
 import { MyStore } from './Redux/Store/Store'

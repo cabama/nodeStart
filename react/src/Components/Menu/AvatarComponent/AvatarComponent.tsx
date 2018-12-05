@@ -15,10 +15,10 @@ interface IState {
 }
 
 type IProps = {
-  history: any,
+  history?: any,
 } & IStateToProps & IDispatchToProps & WithTheme
 
-class AvatarComponent extends React.Component<IProps, IState> {
+class AvatarComponent extends React.Component<any, IState> {
 
   private avatarStyle: React.CSSProperties
   private urls: IUrlsEnv
@@ -37,7 +37,6 @@ class AvatarComponent extends React.Component<IProps, IState> {
 
   public render () {
     const open = Boolean(this.state.anchorElement) || false
-    debugger
     return (
       <div>
         <Avatar
@@ -111,4 +110,4 @@ const mapDispatchToProps = (dispatch: Dispatch): IDispatchToProps => {
 export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps,
-)(withTheme()(AvatarComponent)))
+)(withTheme()(() => <AvatarComponent />)))

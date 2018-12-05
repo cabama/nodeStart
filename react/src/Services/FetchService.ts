@@ -20,7 +20,6 @@ export class Fetch {
     const {path, init, baseUrl} = fetchParams
     const token = LoginService.getToken()
     const initRequest = { ...init, ...{ headers: { ...{ Authorization: 'JWT ' + token}}}}
-    debugger
     if (fetchParams.url) return fetch(fetchParams.url, initRequest)
     const base = baseUrl || this.baseUrl
     const url = base + '/' + path

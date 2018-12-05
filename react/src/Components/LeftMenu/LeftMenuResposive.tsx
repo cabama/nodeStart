@@ -49,7 +49,7 @@ interface IDrawerMenuResposiveProps {
   items: any
 }
 
-class DrawerMenuResposive extends React.Component<IDrawerMenuResposiveProps, any> {
+class DrawerMenuResposive extends React.Component<any, any> {
 
   constructor (props: IDrawerMenuResposiveProps, state: any) {
     super(props)
@@ -75,4 +75,4 @@ class DrawerMenuResposive extends React.Component<IDrawerMenuResposiveProps, any
 
 }
 
-export const LeftMenuResposive = withStyles(styles, { withTheme: true })(DrawerMenuResposive)
+export const LeftMenuResposive = withStyles(styles, { withTheme: true })((props) => <DrawerMenuResposive/>)

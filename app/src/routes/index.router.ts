@@ -41,7 +41,6 @@ export class Routing {
         res.json(req.user.id)
       }, (req, res) => res.json(req.user))
     this.router.get('/hormiga', (req, res) => {
-      debugger
       res.json({ hola: 'hola soy una hormiga' })
     })
 

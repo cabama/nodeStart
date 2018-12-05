@@ -57,7 +57,6 @@ class LoginBridge {
   public static urls = getUrlsEnviroment()
 
   public static loginWithToken (token: string): Promise<any> {
-    debugger
     const requestInit: RequestInit = {
       method: 'GET',
       mode: 'cors',
