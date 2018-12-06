@@ -19,8 +19,6 @@ RUN chmod +x /usr/local/lib/node_modules/yarn/bin/yarn.js
 # COPY PROJECT SETTINGS
 ADD package.json /usr/src/jaguer
 ADD tsconfig.json /usr/src/jaguer
-ADD tsconfig.prod.json /usr/src/jaguer
-ADD tsconfig.test.json /usr/src/jaguer
 ADD tslint.json /usr/src/jaguer
 ADD src /usr/src/jaguer/src
 ADD public /usr/src/jaguer/public
