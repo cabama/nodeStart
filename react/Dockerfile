@@ -3,7 +3,7 @@ FROM node:latest
 # Create app directory
 RUN mkdir -p /usr/src/jaguer
 RUN mkdir -p /usr/src/jaguer/src
-RUN mkdir -p /usr/src/jaguer/build
+RUN mkdir -p /usr/src/jaguer/dist
 RUN mkdir -p /usr/src/jaguer/public
 WORKDIR /usr/src/jaguer
 

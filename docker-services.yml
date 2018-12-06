@@ -21,8 +21,8 @@ services:
     image: jaguer/react:latest
     build: react/.
     command: yarn prod
-    ports:
-      - "2521:2521"
+    volumes:
+      - ./react/dist:/usr/src/jaguer/dist
 
   jaguerNode:
     image: jaguer/node:latest
