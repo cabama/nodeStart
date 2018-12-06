@@ -20,7 +20,7 @@ services:
   jaguerReact:
     image: jaguer/react:latest
     build: react/.
-    command: yarn prod
+    command: yarn build
     volumes:
       - ./react/dist:/usr/src/jaguer/dist
 

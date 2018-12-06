@@ -26,4 +26,3 @@ ADD public /usr/src/jaguer/public
 
 # FINALLY INSTALL PROYECT DEPS
 RUN yarn
-RUN yarn build
