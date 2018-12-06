@@ -21,9 +21,12 @@ services:
     image: jaguer/react:latest
     build: react/.
     command: yarn prod
+    ports:
+      - "2521:2521"
 
   jaguerNode:
     image: jaguer/node:latest
+    build: app/.
     command: yarn start
     depends_on:
       - 'jaguerMongo'

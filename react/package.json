@@ -30,7 +30,8 @@
     "start:dev": "webpack-dev-server",
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject",
-    "carlos": "webpack --mode development --watch"
+    "carlos": "webpack --mode development --watch",
+    "carlos2": "webpack-dev-server --env.REACT_APP_MODE=DEV"
   },
   "devDependencies": {
     "@babel/core": "^7.2.0",
@@ -52,6 +53,7 @@
     "source-map-loader": "^0.2.4",
     "typescript": "^3.2.1",
     "webpack": "^4.27.0",
-    "webpack-cli": "^3.1.2"
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10"
   }
 }

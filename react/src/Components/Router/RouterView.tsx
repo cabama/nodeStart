@@ -42,7 +42,7 @@ export class MainViewComponent extends React.Component<MainViewComponentProps> {
   }
 
   public render () {
-    const isAuth = true
+    const isAuth = this.props.state.user.login
     return (
       <Grid item={true} xs={12} sm={12} md={12}>
       <Router>
