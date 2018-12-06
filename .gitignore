@@ -8,6 +8,9 @@ app/public/
 # MongoDB
 mongo/data/
 
+# react build
+react/dist/*
+
 # Logs
 logs
 *.log

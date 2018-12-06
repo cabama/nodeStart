@@ -1,10 +1,10 @@
 import { Avatar } from '@material-ui/core'
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
-import { withTheme, WithTheme } from '@material-ui/core/styles'
+import { WithTheme, withTheme } from '@material-ui/core/styles'
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { RouteComponentProps, withRouter} from 'react-router-dom'
 import { Dispatch } from 'redux'
 import { getUrlsEnviroment, IUrlsEnv } from '../../../Enviroments'
 import { UserTypes } from '../../../Redux/Actions/UserActions'
@@ -16,9 +16,8 @@ interface IState {
 
 type IProps = {
   history?: any,
-} & IStateToProps & IDispatchToProps & WithTheme
-
-class AvatarComponent extends React.Component<any, IState> {
+} & IStateToProps & IDispatchToProps & WithTheme & RouteComponentProps
+class AvatarComponent extends React.Component<IProps, IState> {
 
   private avatarStyle: React.CSSProperties
   private urls: IUrlsEnv
@@ -107,7 +106,11 @@ const mapDispatchToProps = (dispatch: Dispatch): IDispatchToProps => {
   }
 }
 
-export default withRouter(connect(
+const AvatarComponentConnected = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(withTheme()(() => <AvatarComponent />)))
+)(AvatarComponent)
+
+const AvatarComponentRouter = withRouter(AvatarComponentConnected)
+
+export default withTheme()(AvatarComponentRouter)
