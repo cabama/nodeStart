@@ -27,4 +27,4 @@ ADD public /usr/src/jaguer/public
 
 # FINALLY INSTALL PROYECT DEPS
 RUN yarn
-RUN yarn add create-react-app
+RUN yarn build
