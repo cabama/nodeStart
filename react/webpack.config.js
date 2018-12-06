@@ -1,7 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
-const dotenv = require('dotenv');
-
 
 module.exports = (env) => {
   
@@ -32,7 +30,6 @@ module.exports = (env) => {
       host: '0.0.0.0',
       port: 2727,
       historyApiFallback: true,
-
     },
 
     module: {

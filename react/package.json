@@ -22,16 +22,9 @@
     "yup": "^0.26.6"
   },
   "scripts": {
-    "start": "react-scripts-ts start",
-    "dev": "PORT=2521 REACT_APP_MODE='DEV' REACT_BUILD_MODE='DEV' npm start",
-    "prod": "PORT=2521 REACT_APP_MODE='PROD' REACT_BUILD_MODE='PROD' npm start",
-    "fix": "tslint --fix -c ./tslint.json 'src/**/*{.ts,.tsx}' verbose",
-    "build": "webpack --config webpack.config.js",
-    "start:dev": "webpack-dev-server",
-    "test": "react-scripts-ts test --env=jsdom",
-    "eject": "react-scripts-ts eject",
-    "carlos": "webpack --mode development --watch",
-    "carlos2": "webpack-dev-server --env.REACT_APP_MODE=DEV"
+    "start": "webpack-dev-server --env.REACT_APP_MODE=DEV",
+    "build": "webpack --mode development --env.REACT_APP_MODE=PROD",
+    "fix": "tslint --fix -c ./tslint.json 'src/**/*{.ts,.tsx}' verbose"
   },
   "devDependencies": {
     "@babel/core": "^7.2.0",
@@ -51,9 +44,9 @@
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^4.0.0-beta.4",
     "source-map-loader": "^0.2.4",
-    "typescript": "^3.2.1",
-    "webpack": "^4.27.0",
+    "webpack": "^4.27.1",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.10"
+    "webpack-dev-server": "^3.1.10",
+    "typescript": "^3.2.1"
   }
 }
